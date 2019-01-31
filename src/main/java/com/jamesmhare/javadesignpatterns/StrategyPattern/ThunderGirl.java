@@ -1,11 +1,11 @@
-package java.com.jamesmhare.javadesignpatterns.StrategyPattern;
+package com.jamesmhare.javadesignpatterns.StrategyPattern;
 
 /**
  * Serves as a class for the Lightning Boy character.
  */
 public class ThunderGirl extends Hero {
 
-    ThunderGirl(){
+    public ThunderGirl(){
         super();
         power = new ThunderKick();
     }

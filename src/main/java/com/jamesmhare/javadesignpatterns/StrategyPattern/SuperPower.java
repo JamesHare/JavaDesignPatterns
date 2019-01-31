@@ -1,4 +1,4 @@
-package java.com.jamesmhare.javadesignpatterns.StrategyPattern;
+package com.jamesmhare.javadesignpatterns.StrategyPattern;
 
 /**
  * This serves as an interface for a super power to be used by a hero.

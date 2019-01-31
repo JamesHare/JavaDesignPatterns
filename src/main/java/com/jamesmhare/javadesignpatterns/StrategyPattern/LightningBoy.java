@@ -1,4 +1,4 @@
-package java.com.jamesmhare.javadesignpatterns.StrategyPattern;
+package com.jamesmhare.javadesignpatterns.StrategyPattern;
 
 /**
  * Serves as a class for the Lightning Boy character.

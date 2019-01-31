@@ -1,4 +1,4 @@
-package java.com.jamesmhare.javadesignpatterns.StrategyPattern;
+package com.jamesmhare.javadesignpatterns.StrategyPattern;
 
 /**
  * Serves as the super class for a hero character.
