@@ -1,5 +1,9 @@
 package com.jamesmhare.javadesignpatterns;
 
+import com.jamesmhare.javadesignpatterns.ObserverPattern.Observer;
+import com.jamesmhare.javadesignpatterns.ObserverPattern.ServerStats;
+import com.jamesmhare.javadesignpatterns.ObserverPattern.ServerObserver;
+import com.jamesmhare.javadesignpatterns.ObserverPattern.Subject;
 import com.jamesmhare.javadesignpatterns.StrategyPattern.Hero;
 import com.jamesmhare.javadesignpatterns.StrategyPattern.LightningBoy;
 import com.jamesmhare.javadesignpatterns.StrategyPattern.ThunderGirl;
@@ -11,8 +15,13 @@ import com.jamesmhare.javadesignpatterns.StrategyPattern.ThunderKick;
  */
 public class Playground {
 
-    public static Hero heroCharacterTwo;
+    private static Hero heroCharacterTwo;
     private static Hero heroCharacterOne;
+    private static Subject server;
+    private static Observer clientOne;
+    private static Observer clientTwo;
+    private static Observer clientThree;
+
 
     public static void main(String[] args) {
 
@@ -26,6 +35,18 @@ public class Playground {
 
         heroCharacterOne.setPower(new ThunderKick());
         System.out.println("Hero Character One: " + heroCharacterOne.usePower());
+
+
+        // The Observer Pattern
+
+        server = new ServerStats();
+        clientOne = new ServerObserver("ClientOne", server);
+        clientTwo = new ServerObserver("ClientTwo", server);
+        clientThree = new ServerObserver("ClientThree", server);
+
+        server.setStatus("ON");
+        server.setStatus("OFF");
+
     }
 
 }
