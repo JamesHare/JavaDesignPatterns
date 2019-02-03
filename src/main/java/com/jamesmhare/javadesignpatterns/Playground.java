@@ -1,5 +1,7 @@
 package com.jamesmhare.javadesignpatterns;
 
+import com.jamesmhare.javadesignpatterns.FactoryPattern.GameCharacter;
+import com.jamesmhare.javadesignpatterns.FactoryPattern.GameCharacterFactory;
 import com.jamesmhare.javadesignpatterns.ObserverPattern.Observer;
 import com.jamesmhare.javadesignpatterns.ObserverPattern.ServerStats;
 import com.jamesmhare.javadesignpatterns.ObserverPattern.ServerObserver;
@@ -8,6 +10,9 @@ import com.jamesmhare.javadesignpatterns.StrategyPattern.Hero;
 import com.jamesmhare.javadesignpatterns.StrategyPattern.LightningBoy;
 import com.jamesmhare.javadesignpatterns.StrategyPattern.ThunderGirl;
 import com.jamesmhare.javadesignpatterns.StrategyPattern.ThunderKick;
+
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 /**
  * This class serves as an entry point for the Java Design Patterns application. It allows us to
@@ -21,7 +26,8 @@ public class Playground {
     private static Observer clientOne;
     private static Observer clientTwo;
     private static Observer clientThree;
-
+    private static GameCharacterFactory gameCharacterFactory;
+    private static Random randNumber = new Random();
 
     public static void main(String[] args) {
 
@@ -47,6 +53,19 @@ public class Playground {
         server.setStatus("ON");
         server.setStatus("OFF");
 
+        // The Factory Pattern
+
+        gameCharacterFactory = new GameCharacterFactory();
+        GameCharacter characterOne = gameCharacterFactory.createGameCharacter(randNumber.nextInt(4) + 1);
+        System.out.println(characterOne.getName() + " has entered the arena.");
+        GameCharacter characterTwo = gameCharacterFactory.createGameCharacter(randNumber.nextInt(4) + 1);
+        System.out.println(characterTwo.getName() + " has entered the arena.");
+        while (characterOne.getStatus().toUpperCase().equals("Alive".toUpperCase()) && characterTwo.getStatus().toUpperCase().equals("Alive".toUpperCase())) {
+            characterOne.attack(characterTwo);
+            if (characterTwo.getStatus().toUpperCase().equals("Alive".toUpperCase())) {
+                characterTwo.attack(characterOne);
+            }
+        }
     }
 
 }
