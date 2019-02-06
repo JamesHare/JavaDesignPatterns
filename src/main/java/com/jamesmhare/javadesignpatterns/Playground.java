@@ -1,5 +1,8 @@
 package com.jamesmhare.javadesignpatterns;
 
+import com.jamesmhare.javadesignpatterns.AbstractFactoryPattern.AbstractFactory;
+import com.jamesmhare.javadesignpatterns.AbstractFactoryPattern.FactoryProducer;
+import com.jamesmhare.javadesignpatterns.AbstractFactoryPattern.Vehicle;
 import com.jamesmhare.javadesignpatterns.FactoryPattern.GameCharacter;
 import com.jamesmhare.javadesignpatterns.FactoryPattern.GameCharacterFactory;
 import com.jamesmhare.javadesignpatterns.ObserverPattern.Observer;
@@ -66,6 +69,20 @@ public class Playground {
                 characterTwo.attack(characterOne);
             }
         }
+
+        // The Abstract Factory Pattern
+
+        AbstractFactory redVehicleFactory = FactoryProducer.createFactory("Red");
+        Vehicle redCar = redVehicleFactory.createVehicle("Car");
+        redCar.startEngine();
+        Vehicle redMotorbike = redVehicleFactory.createVehicle("Motorbike");
+        redMotorbike.startEngine();
+
+        AbstractFactory blueVehicleFactory = FactoryProducer.createFactory("Blue");
+        Vehicle blueCar = blueVehicleFactory.createVehicle("Car");
+        blueCar.startEngine();
+        Vehicle blueMotorbike = blueVehicleFactory.createVehicle("Motorbike");
+        blueMotorbike.startEngine();
     }
 
 }
