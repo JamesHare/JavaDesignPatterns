@@ -22,8 +22,8 @@ public class Player {
      */
     public void drawCards() {
         cardsInHand.clear();
-        cardsInHand.add(currentDeck.getCurrentDeck().remove((int)(Math.random() * currentDeck.getCurrentDeck().size()));
-        cardsInHand.add(currentDeck.getCurrentDeck().remove((int)(Math.random() * currentDeck.getCurrentDeck().size()));
+        cardsInHand.add(currentDeck.getCurrentDeck().remove((int)(Math.random() * currentDeck.getCurrentDeck().size())));
+        cardsInHand.add(currentDeck.getCurrentDeck().remove((int)(Math.random() * currentDeck.getCurrentDeck().size())));
     }
 
     /**
@@ -31,13 +31,24 @@ public class Player {
      * @return - value of the players hand as an int.
      */
     public int getHandValue() {
+        return cardsInHand.get(0).getCardValue() + cardsInHand.get(1).getCardValue();
+    }
+
+    /**
+     * Prints a message when a player is playing their turn.
+     */
+    public void playTurn() {
         System.out.println(playerName + " has the " +
                 cardsInHand.get(0).getCardName() + " and the " +
-                cardsInHand.get(1).getCardName() + " in their hand.");
-        System.out.println(playerName + " has a hand value of " +
-                cardsInHand.get(0).getCardValue() +
-                cardsInHand.get(1).getCardValue());
-        return cardsInHand.get(0).getCardValue() + cardsInHand.get(1).getCardValue();
+                cardsInHand.get(1).getCardName() + " in their hand (" + this.getHandValue() + ").");
+    }
+
+    /**
+     * Returns the name of the player.
+     * @return the name of the player as a String.
+     */
+    public String getPlayerName() {
+        return playerName;
     }
 
 }

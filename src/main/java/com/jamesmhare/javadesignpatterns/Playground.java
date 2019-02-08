@@ -9,11 +9,15 @@ import com.jamesmhare.javadesignpatterns.ObserverPattern.Observer;
 import com.jamesmhare.javadesignpatterns.ObserverPattern.ServerStats;
 import com.jamesmhare.javadesignpatterns.ObserverPattern.ServerObserver;
 import com.jamesmhare.javadesignpatterns.ObserverPattern.Subject;
+import com.jamesmhare.javadesignpatterns.SingletonPattern.Deck;
+import com.jamesmhare.javadesignpatterns.SingletonPattern.Player;
 import com.jamesmhare.javadesignpatterns.StrategyPattern.Hero;
 import com.jamesmhare.javadesignpatterns.StrategyPattern.LightningBoy;
 import com.jamesmhare.javadesignpatterns.StrategyPattern.ThunderGirl;
 import com.jamesmhare.javadesignpatterns.StrategyPattern.ThunderKick;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -83,6 +87,43 @@ public class Playground {
         blueCar.startEngine();
         Vehicle blueMotorbike = blueVehicleFactory.createVehicle("Motorbike");
         blueMotorbike.startEngine();
+
+        // The Singleton Pattern
+
+        Deck theDeck = Deck.getInstance();
+
+        Player dealer = new Player("Dealer");
+        List<Player> players = Arrays.asList(
+                new Player("John"),
+                new Player("Stephen"),
+                new Player("Diane")
+        );
+
+        for (int i = 0; i < 8; i++) { // for three rounds
+            System.out.println("Round " + (i+1));
+            dealer.drawCards();
+            dealer.playTurn();
+            for(Player player : players) {
+                player.drawCards();
+                player.playTurn();
+                if (player.getHandValue() == dealer.getHandValue()) {
+                    System.out.println(player.getPlayerName() + " draws with the dealer. Push.");
+                } else if (player.getHandValue() == 21) {
+                    System.out.println(player.getPlayerName() + " wins! Winner Winner Chicken Dinner!");
+                } else if (player.getHandValue() > dealer.getHandValue()) {
+                    System.out.println(player.getPlayerName() + " wins!");
+                } else {
+                    System.out.println(player.getPlayerName() + " loses.");
+                }
+            }
+            System.out.println("The size of the deck is now " + Deck.getInstance().getCurrentDeck().size());
+            Deck.getInstance().checkDeckStatus(players.size() + 1);
+        }
+
+        Deck theDeck2 = Deck.getInstance();
+        System.out.println("The size of the second deck is " + theDeck2.getInstance().getCurrentDeck().size()
+            + ", which is the same size of the first deck because it is a Singleton.");
+
     }
 
 }

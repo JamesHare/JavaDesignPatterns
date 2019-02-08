@@ -36,7 +36,7 @@ public class Deck {
      * @param numberOfPlayers - The number of players in game.
      */
     public void checkDeckStatus(int numberOfPlayers) {
-        if (currentDeck.size() <= numberOfPlayers * 2) {
+        if (currentDeck.size() < numberOfPlayers * 2) {
             reloadDeck();
         }
     }
@@ -44,6 +44,7 @@ public class Deck {
     private void reloadDeck() {
         currentDeck.clear();
         currentDeck.addAll(FullDeck.fullDeck);
+        System.out.println("Not enough cards. The deck was reloaded.");
     }
 
     /**
