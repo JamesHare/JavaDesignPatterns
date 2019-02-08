@@ -3,11 +3,13 @@ package com.jamesmhare.javadesignpatterns;
 import com.jamesmhare.javadesignpatterns.AbstractFactoryPattern.AbstractFactory;
 import com.jamesmhare.javadesignpatterns.AbstractFactoryPattern.FactoryProducer;
 import com.jamesmhare.javadesignpatterns.AbstractFactoryPattern.Vehicle;
+import com.jamesmhare.javadesignpatterns.BuilderPattern.Burger;
+import com.jamesmhare.javadesignpatterns.BuilderPattern.BurgerImpl;
 import com.jamesmhare.javadesignpatterns.FactoryPattern.GameCharacter;
 import com.jamesmhare.javadesignpatterns.FactoryPattern.GameCharacterFactory;
 import com.jamesmhare.javadesignpatterns.ObserverPattern.Observer;
-import com.jamesmhare.javadesignpatterns.ObserverPattern.ServerStats;
 import com.jamesmhare.javadesignpatterns.ObserverPattern.ServerObserver;
+import com.jamesmhare.javadesignpatterns.ObserverPattern.ServerStats;
 import com.jamesmhare.javadesignpatterns.ObserverPattern.Subject;
 import com.jamesmhare.javadesignpatterns.SingletonPattern.Deck;
 import com.jamesmhare.javadesignpatterns.SingletonPattern.Player;
@@ -19,7 +21,6 @@ import com.jamesmhare.javadesignpatterns.StrategyPattern.ThunderKick;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 /**
  * This class serves as an entry point for the Java Design Patterns application. It allows us to
@@ -124,6 +125,19 @@ public class Playground {
         System.out.println("The size of the second deck is " + theDeck2.getInstance().getCurrentDeck().size()
             + ", which is the same size of the first deck because it is a Singleton.");
 
+        // The Builder Pattern
+
+        Burger tastyBurger = new BurgerImpl()
+                .withBread("Brioche")
+                .withMeat("Beef")
+                .withCheese("American")
+                .withTopping("Lettuce")
+                .withTopping("Ketchup")
+                .withTopping("Grilled Onion")
+                .withTopping("Pickles")
+                .build();
+
+        tastyBurger.printOrder();
     }
 
 }
