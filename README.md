@@ -1,7 +1,7 @@
 # JavaDesignPatterns
 My examples of the most common Java design patterns.
 
-[![Build Status](https://travis-ci.org/JamesHare/JavaDesignPatterns.svg?branch=master)](https://travis-ci.org/JamesHare/JavaDesignPatterns)
+[![Build Status](https://travis-ci.com/JamesHare/JavaDesignPatterns.svg?branch=master)](https://travis-ci.com/JamesHare/JavaDesignPatterns)
 
 # Author
 James Hare
