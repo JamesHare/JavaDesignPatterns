@@ -5,6 +5,10 @@ import com.jamesmhare.javadesignpatterns.AbstractFactoryPattern.FactoryProducer;
 import com.jamesmhare.javadesignpatterns.AbstractFactoryPattern.Vehicle;
 import com.jamesmhare.javadesignpatterns.BuilderPattern.Burger;
 import com.jamesmhare.javadesignpatterns.BuilderPattern.BurgerImpl;
+import com.jamesmhare.javadesignpatterns.DecoratorPattern.Baubles;
+import com.jamesmhare.javadesignpatterns.DecoratorPattern.ChristmasTree;
+import com.jamesmhare.javadesignpatterns.DecoratorPattern.ChristmasTreeImpl;
+import com.jamesmhare.javadesignpatterns.DecoratorPattern.Garland;
 import com.jamesmhare.javadesignpatterns.FactoryPattern.GameCharacter;
 import com.jamesmhare.javadesignpatterns.FactoryPattern.GameCharacterFactory;
 import com.jamesmhare.javadesignpatterns.ObserverPattern.Observer;
@@ -146,6 +150,10 @@ public class Playground {
         ColorStore.getColor("black").addColor();
         ColorStore.getColor("black").addColor();
         ColorStore.getColor("blue").addColor();
+
+        // The Decorator Pattern
+        ChristmasTree tree = new Baubles(new Garland(new Garland(new ChristmasTreeImpl())));
+        System.out.println(tree.decorate());
     }
 
 }
