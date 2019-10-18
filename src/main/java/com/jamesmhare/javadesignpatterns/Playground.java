@@ -11,6 +11,7 @@ import com.jamesmhare.javadesignpatterns.ObserverPattern.Observer;
 import com.jamesmhare.javadesignpatterns.ObserverPattern.ServerObserver;
 import com.jamesmhare.javadesignpatterns.ObserverPattern.ServerStats;
 import com.jamesmhare.javadesignpatterns.ObserverPattern.Subject;
+import com.jamesmhare.javadesignpatterns.PrototypePattern.ColorStore;
 import com.jamesmhare.javadesignpatterns.SingletonPattern.Deck;
 import com.jamesmhare.javadesignpatterns.SingletonPattern.Player;
 import com.jamesmhare.javadesignpatterns.StrategyPattern.Hero;
@@ -138,6 +139,13 @@ public class Playground {
                 .build();
 
         tastyBurger.printOrder();
+
+        // The Prototype Pattern
+
+        ColorStore.getColor("blue").addColor();
+        ColorStore.getColor("black").addColor();
+        ColorStore.getColor("black").addColor();
+        ColorStore.getColor("blue").addColor();
     }
 
 }
